@@ -7,15 +7,15 @@ cd /owncloud
 
 SERVICENAME=$(basename $(pwd))
 
-systemctl stop $SERVICENAME
+sudo systemctl stop $SERVICENAME
 
 if [ "$choice" == "y" ]; then
-    docker volume rm $(docker volume ls -q)
+    sudo docker volume rm $(docker volume ls -q)
 fi
 
-rm /etc/systemd/system/$SERVICENAME.service
-systemctl daemon-reload
+sudo rm /etc/systemd/system/$SERVICENAME.service
+sudo systemctl daemon-reload
 
-rm -r /owncloud
+sudo rm -r /owncloud
 
 echo 'Uninstallation completed!'

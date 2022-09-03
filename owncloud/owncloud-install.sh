@@ -1,10 +1,10 @@
 # !/bin/bash
 mkdir /owncloud
-chmod 755 /owncloud
+sudo chmod 755 /owncloud
 cp ./docker-compose.yml /owncloud
 cd /owncloud
 
-cat << EOF > .env
+sudo cat << EOF > .env
 OWNCLOUD_VERSION=10.10
 OWNCLOUD_DOMAIN=localhost:8080
 ADMIN_USERNAME=admin
@@ -39,9 +39,9 @@ EOF
 echo "Enabling & starting $SERVICENAME"
 
 # Reload systemd units
-systemctl daemon-reload
+sudo systemctl daemon-reload
 # Autostart systemd service
-systemctl enable $SERVICENAME.service
+sudo systemctl enable $SERVICENAME.service
 # Start systemd service now
-systemctl start $SERVICENAME.service
+sudo systemctl start $SERVICENAME.service
 
